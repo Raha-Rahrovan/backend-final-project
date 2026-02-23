@@ -2,11 +2,16 @@
 <html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
-        فروشگاه درنیکا
-        | صفحه اصلی
+
+        {{config('project.title')}}
+        @isset($title)
+            |
+            {{$title}}
+        @endisset
+
     </title>
 
     <link rel="stylesheet" href="{{asset('assets/styles/app.css')}}">
@@ -31,11 +36,11 @@
 
 @include('layouts.icons')
 
-@include('layouts.header')
+@includeWhen(!isset($withoutHeader) , 'layouts.header')
 
 @yield('content')
 
-@include('layouts.footer')
+@includeWhen(!isset($withoutHeader) , 'layouts.footer')
 
 <!-- Overlay -->
 <div class="overlay"></div>
@@ -45,7 +50,6 @@
 <script src="{{asset('assets/swiper/swiper.js')}}"></script>
 <script src="{{asset('assets/scripts/app.js')}}"></script>
 <script type="module" src="{{asset('assets/scripts/slider.js')}}"></script>
-
 
 
 </body>
