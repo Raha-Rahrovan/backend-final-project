@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProductStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Product
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $name_en
@@ -25,7 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property ProductCategory $productCategory
  * @property Collection|OrderItem[] $orderItems
  * @property Collection|ProductImage[] $productImages
@@ -43,7 +44,7 @@ class Product extends Model
 		'discount' => 'int',
 		'qty' => 'int',
 		'product_category_id' => 'int',
-		'status' => 'bool'
+		'status' => ProductStatus::class
 	];
 
 	protected $fillable = [

@@ -6,12 +6,13 @@
 
 namespace App\Models;
 
+use App\Enums\AdminStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Admin
- * 
+ *
  * @property int $id
  * @property string $full_name
  * @property string $username
@@ -28,7 +29,7 @@ class Admin extends Model
 	public static $snakeAttributes = false;
 
 	protected $casts = [
-		'status' => 'bool'
+		'status' => AdminStatus::class
 	];
 
 	protected $hidden = [
